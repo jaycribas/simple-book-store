@@ -1,6 +1,6 @@
 # Simple Book Store
 
-Project Name: #right-shelduck
+Project Name: #right-shelduck  
 Team: Rhonda Smith, Jay Cribas
 
 ## Challenge Rubric
