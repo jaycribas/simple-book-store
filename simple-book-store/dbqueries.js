@@ -2,17 +2,6 @@ var pgp = require('pg-promise')()
 var connectionString = 'postgres://localhost:5432/bookstore'
 var db = pgp(connectionString)
 
-
-//add books - one:
-const addBook = (book) => {
-  return db.none(`
-    INSERT INTO
-      books (title, author, genre, subgenre, height, publisher)
-    VALUES
-      ($1, $2)
-  `)
-}
-
 //see a list of books - any:
 const listBooks = () => {
   return db.any(`
@@ -23,6 +12,27 @@ const listBooks = () => {
   `)
 }
 
+const addBook = (book) => {
+  return db.one(`
+    INSERT INTO
+      books (title, author, genre, subgenre, height, publisher)
+    VALUES
+      ($/title/, $/author/, $/genre/, $/subgenre/, $/height/, $/publisher/)
+    RETURNING
+      *
+  `, book )
+}
+
+// const addBook = ({ title, author, genre, subgenre, height, publisher }) => {
+//   return db.one(`
+//     INSERT INTO
+//       books (title, author, genre, subgenre, height, publisher)
+//     VALUES
+//       ($1, $2, $3, $4, $5, $6)
+//     RETURNING
+//       *
+//   `, [title, author, genre, subgenre, height, publisher])
+// }
 
 //edit books - one:
 const editBook = (id, title, author, genre, subgenre, height, publisher) => {
