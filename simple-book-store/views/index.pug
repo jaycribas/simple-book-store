@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  //- h1= Bookstore
+  //- for book in books
+  //-   p= book.author
+
+  table
+    tr
+      th Title
+      th Author
+    for book in books
+      tr
+        td= book.title
+        td= book.author
