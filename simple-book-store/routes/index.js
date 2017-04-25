@@ -12,23 +12,32 @@ router.get('/', (req, res, next) => {
     res.render(error)
   })
 });
+
 //GET
 //POST
+
 router.post('/addbook', (req, res) => {
-  const book = req.body
+  let book = req.body
   console.log('book --->', book)
   db.addBook(book)
-  .then( id =>
-    res.redirect(`/${id}`)
-  ).catch(error => {
+  .then(() =>
+  res.status(200)
+    .json({
+      status: 'success',
+      message: 'Added book'
+    }))
+  // res.redirect('/'))
+  .catch(error => {
     res.status(500).render('error', {
       error: error,
       message: error.message,
     })
   })
 })
+
 //PUT
 //DELETE
+
 router.delete('/deletebook/:id', (req, res) => {
   const id  = req.params.id
   db.deleteBook(id)
