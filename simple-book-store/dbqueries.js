@@ -34,18 +34,30 @@ const addBook = (book) => {
 //   `, [title, author, genre, subgenre, height, publisher])
 // }
 
-//edit books - one:
-const editBook = (id, title, author, genre, subgenre, height, publisher) => {
-  return db.one(`
+//edit books - original one:
+// const editBook = (id, title, author, genre, subgenre, height, publisher) => {
+//   return db.one(`
+//     UPDATE
+//       books  (title, author, genre, subgenre, height, publisher)
+//     SET
+//       title = ${title}, author = ${author}, genre = ${genre}, subgenre = ${subgenre}, height = ${height}, publisher = ${publisher}
+//     WHERE
+//       id = ${id};
+//   `)
+// }
+//new edit book WIP
+const editBook = (id, book) => {
+  return db.any(`
     UPDATE
       books
     SET
-      title = ${title}, author = ${author}, genre = ${genre}, subgenre = ${subgenre}, height = ${height}, publisher = ${publisher}
+      title = $/title/, author = $/author/, genre = $/genre/, subgenre = $/subgenre/, height = $/height/, publisher = $/publisher/
     WHERE
-      id = ${id};
-  `)
+      id = ${id}
+    RETURNING
+      *
+  `, [id, book])
 }
-
 
 //delete a book - one:
 const deleteBook = (id) => {
@@ -66,8 +78,8 @@ const searchTitles = (title) => {
     FROM
       books
     WHERE
-      title = ${title}
-  `)
+      title = $1
+  `, title)
 }
 
 const searchAuthors = (author) => {
@@ -77,8 +89,8 @@ const searchAuthors = (author) => {
     FROM
       books
     WHERE
-      author = ${author}
-  `)
+      author = $1
+  `, author)
 }
 
 const searchGenres = (genre) => {
@@ -88,8 +100,8 @@ const searchGenres = (genre) => {
     FROM
       books
     WHERE
-      genre = ${genre}
-  `)
+      genre = $1
+  `, genre)
 }
 
 
