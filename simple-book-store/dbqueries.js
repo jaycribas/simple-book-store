@@ -5,12 +5,12 @@ var db = pgp(connectionString)
 
 //add books - one:
 const addBook = (book) => {
-  return db.one(`
-      INSERT INTO
-        books (title, author, genre, subgenre, height, publisher)
-      VALUES
-        (${title}, ${author}, ${genre}, ${subgenre}, ${height}, ${publisher})
-    `)
+  return db.none(`
+    INSERT INTO
+      books (title, author, genre, subgenre, height, publisher)
+    VALUES
+      ($1, $2)
+  `)
 }
 
 //see a list of books - any:
@@ -20,7 +20,7 @@ const listBooks = () => {
       *
     FROM
       books
-    `)
+  `)
 }
 
 
@@ -33,18 +33,18 @@ const editBook = (id, title, author, genre, subgenre, height, publisher) => {
       title = ${title}, author = ${author}, genre = ${genre}, subgenre = ${subgenre}, height = ${height}, publisher = ${publisher}
     WHERE
       id = ${id};
-    `)
+  `)
 }
 
 
 //delete a book - one:
 const deleteBook = (id) => {
-  return db.one(`
+  return db.any(`
     DELETE FROM
       books
     WHERE
       id = ${id}
-    `)
+  `)
 }
 
 
@@ -57,7 +57,7 @@ const searchTitles = (title) => {
       books
     WHERE
       title = ${title}
-    `)
+  `)
 }
 
 const searchAuthors = (author) => {
@@ -68,7 +68,7 @@ const searchAuthors = (author) => {
       books
     WHERE
       author = ${author}
-    `)
+  `)
 }
 
 const searchGenres = (genre) => {
@@ -79,15 +79,20 @@ const searchGenres = (genre) => {
       books
     WHERE
       genre = ${genre}
-    `)
+  `)
 }
 
 
 //view book details - one:
 const viewBook = (id) => {
   return db.one(`
-    SELECT * FROM books WHERE id = ${id}
-    `)
+    SELECT
+      *
+    FROM
+      books
+    WHERE
+      id = ${id}
+  `)
 }
 
 module.exports = {
