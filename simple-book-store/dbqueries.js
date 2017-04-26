@@ -46,18 +46,28 @@ const addBook = (book) => {
 //   `)
 // }
 //new edit book WIP
-const editBook = (id, book) => {
-  return db.any(`
-    UPDATE
-      books
-    SET
-      title = $/title/, author = $/author/, genre = $/genre/, subgenre = $/subgenre/, height = $/height/, publisher = $/publisher/
-    WHERE
-      id = ${id}
-    RETURNING
-      *
-  `, [id, book])
-}
+const editBook = ( id, book ) =>
+  db.one(
+    pgp.helpers.update( book, null, 'books' ) + ` WHERE id=${id} RETURNING *`
+  )
+
+  // const setItems = Object.keys( books ).reduce( (memo, key) => {
+  //   memo.push( `${key}=${book[key]}` )
+  //
+  //   return memo
+  // }, []).join( ', ' )
+  //
+  // const query = `UPDATE books SET ${setItems} WHERE id=${id} RETURNING *`
+// return db.one(`
+//   UPDATE
+//     books
+//   SET
+//     title = $/title/, author = $/author/, genre = $/genre/, subgenre = $/subgenre/, height = $/height/, publisher = $/publisher/
+//   WHERE
+//     id = $/id/
+//   RETURNING
+//     *
+// `, book )
 
 //delete a book - one:
 const deleteBook = (id) => {

@@ -66,21 +66,21 @@ router.post('/addbook', (req, res) => {
 
 //PUT
 router.put('/editbook/:id', (req, res) => {
-  let book = req.body
   const id = req.params.id
-  console.log(book)
-  db.editBook(id, book)
-  .then(() =>
-  res.status(200)
-    .json({
-      status: 'success',
-      message: 'Edited book'
-    }))
-  .catch(error => {
-    res.status(500).render('error', {
-      error: error,
-      message: error.message,
-    })
+  const book = req.body
+  console.log('booooook edit ----- >', book)
+  db.editBook( id, book )
+    .then( () =>
+      res.status(201).json({
+        status: 'success',
+        message: 'Edited book'
+      })
+     )
+    .catch( error => {
+      res.status(500).render('error', {
+        error: error,
+        message: error.message,
+      })
   })
 })
 
