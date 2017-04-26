@@ -117,14 +117,14 @@ const searchGenres = (genre) => {
 
 //view book details - one:
 const viewBook = (id) => {
-  return db.one(`
+  return db.any(`
     SELECT
       *
     FROM
       books
     WHERE
-      id = ${id}
-  `)
+      id = $1
+  `, id )
 }
 
 module.exports = {
