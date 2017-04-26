@@ -43,6 +43,17 @@ router.get('/genre/:genre', (req, res) => {
   } )
 })
 
+//GET single book
+router.get('/book/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  db.viewBook(id)
+  .then(books => {
+    res.render('index', { books: books})
+  } )
+})
+
+
 //POST
 
 router.post('/addbook', (req, res) => {
