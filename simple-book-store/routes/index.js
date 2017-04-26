@@ -56,17 +56,22 @@ router.get('/book/:id', (req, res) => {
 
 //POST
 
+router.get('/addbook', (req, res, next) => {
+  res.render('addbook');
+});
+
+
 router.post('/addbook', (req, res) => {
   let book = req.body
   console.log('book --->', book)
   db.addBook(book)
   .then(() =>
-  res.status(200)
-    .json({
-      status: 'success',
-      message: 'Added book'
-    }))
-  // res.redirect('/'))
+  // res.status(200)
+  //   .json({
+  //     status: 'success',
+  //     message: 'Added book'
+  //   }))
+  res.redirect('/'))
   .catch(error => {
     res.status(500).render('error', {
       error: error,

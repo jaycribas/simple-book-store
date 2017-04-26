@@ -1,0 +1,54 @@
+extends layout
+
+block content
+  h1 Add a book:
+  
+  form.addBook(
+    action='/addBook'
+    method='post'
+  ) 
+    label(for='title') Title&nbsp;
+    input(
+      type='text'
+      placeholder='title'
+      name='title'
+    )
+    br
+    label(for='author') Author&nbsp;
+    input(
+      type='text'
+      placeholder='author'
+      name='author'
+    )
+    br
+    label(for='genre') Genre&nbsp;
+    input(
+      type='text'
+      placeholder='genre'
+      name='genre'
+    )
+    br
+    label(for='subgenre') Subgenre&nbsp;
+    input(
+      type='text'
+      placeholder='subgenre'
+      name='subgenre'
+    )
+    br
+    label(for='height') Pages&nbsp;
+    input(
+      type='text'
+      placeholder='pages'
+      name='height'
+    )
+    br
+    label(for='publisher') Publisher&nbsp;
+    input(
+      type='text'
+      placeholder='publisher'
+      name='publisher'
+    )
+    br
+    button(
+      type='submit'
+      ) +
