@@ -8,35 +8,7 @@ block content
     type='button'
     onclick="location.href='/addbook'"
     ) Add Book
-  
-  //- form
-  //-   input#title(
-  //-     type='text'
-  //-     name='title'
-  //-     placeholder='Search by Title'
-  //-   )
-  //-   button#searchTitles(
-  //-     type='submit'
-  //-   ) search
-  //- form
-  //-   input#author(
-  //-     type='text'
-  //-     name='author'
-  //-     placeholder='Search by Author'
-  //-   )
-  //-   button#searchAuthors(
-  //-     type='submit'
-  //-   ) search
-  //- form
-  //-   input#genre(
-  //-     type='text'
-  //-     name='genre'
-  //-     placeholder='Search by Genre'
-  //-   )
-  //-   button#searchGenres(
-  //-     type='submit'
-  //-   ) search
-  
+    
   table.books.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
     thead
       tr
@@ -48,27 +20,8 @@ block content
         tr
           td
             a(href='/book/' + book.id)= book.title
-              
           td= book.author
           td= book.genre
           
   script.
     $('.books').DataTable();
-    console.log('hiiiiii')
-
-  script.
-    $('#searchTitles').on('click', function () {
-    var searchInput = $('#title').val();
-    var url = "title/" + searchInput;
-    window.open(url);
-    });
-    $('#searchAuthors').on('click', function () {
-    var searchInput = $('#author').val();
-    var url = "author/" + searchInput;
-    window.open(url);
-    });
-    $('#searchGenres').on('click', function () {
-    var searchInput = $('#genre').val();
-    var url = "genre/" + searchInput;
-    window.open(url);
-    });
