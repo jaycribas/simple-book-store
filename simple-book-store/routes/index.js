@@ -40,15 +40,16 @@ router.post('/addbook', (req, res) => {
 })
 
 //PUT
-router.put('/editbook/:id', (req, res) => {
+router.post('/editbook/:id', (req, res) => {
   const id = req.params.id
   const book = req.body
   db.editBook( id, book )
     .then( () =>
-      res.status(201).json({
-        status: 'success',
-        message: 'Edited book'
-      })
+      // res.status(201).json({
+      //   status: 'success',
+      //   message: 'Edited book'
+      // })
+      res.redirect('/book/' + id)
      )
     .catch( error => {
       res.status(500).render('error', {
@@ -72,35 +73,5 @@ router.post('/book/deletebook/:id', (req, res) => {
     })
   })
 })
-
-// //GET title
-// router.get('/title/:title', (req, res) => {
-//   const title = req.params.title
-//   console.log(title)
-//   db.searchTitles(title)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
-//
-// //GET author
-// router.get('/author/:author', (req, res) => {
-//   const author = req.params.author
-//   console.log(author)
-//   db.searchAuthors(author)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
-//
-// //GET genre
-// router.get('/genre/:genre', (req, res) => {
-//   const genre = req.params.genre
-//   console.log(genre)
-//   db.searchGenres(genre)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
 
 module.exports = router;

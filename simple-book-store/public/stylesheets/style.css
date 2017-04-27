@@ -11,3 +11,18 @@ a {
 label {
   display:inline;
 }
+
+.saveButton,
+[contenteditable] .editButton{
+    display: none;
+}
+
+.editButton,
+[contenteditable] .saveButton {
+    display: inline; /* For IE */
+    display: inline-block;
+}
+
+[contenteditable] {
+    background: #ddddff;
+}
