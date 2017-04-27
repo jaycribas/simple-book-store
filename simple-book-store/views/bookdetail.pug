@@ -17,13 +17,13 @@ block content
                 name='title'
                 value=book.title
               )
-          td.wtf    
-            input#editTitleButton(type='button', value='edit')
-            input#saveTitleButton(hidden='' type='submit', value='save')
+            td    
+              input#editTitleButton(type='button', value='edit')
+              input#saveTitleButton(hidden='' type='submit', value='save')
       tr
         th Author
-        td= book.author
         td
+          span#theAuthor= book.author
           form(
             action='/editbook/'+book.id
             method='post'
@@ -34,12 +34,13 @@ block content
                 name='author'
                 value=book.author
                 )
-            input#editAuthorButton(type='button', value='edit')
-            input#saveAuthorButton(hidden='' type='submit', value='save')
+            td
+              input#editAuthorButton(type='button', value='edit')
+              input#saveAuthorButton(hidden='' type='submit', value='save')
       tr
         th Genre
-        td= book.genre
         td
+          span#theGenre= book.genre
           form(
             action='/editbook/'+book.id
             method='post'
@@ -50,12 +51,13 @@ block content
                 name='genre'
                 value=book.genre
                 )
-            input#editGenreButton(type='button', value='edit')
-            input#saveGenreButton(hidden='' type='submit', value='save')
+            td
+              input#editGenreButton(type='button', value='edit')
+              input#saveGenreButton(hidden='' type='submit', value='save')
       tr
         th Subgenre
-        td= book.subgenre
         td
+          span#theSubgenre= book.subgenre
           form(
             action='/editbook/'+book.id
             method='post'
@@ -66,12 +68,13 @@ block content
                 name='subgenre'
                 value=book.subgenre
                 )
-            input#editSubgenreButton(type='button', value='edit')
-            input#saveSubgenreButton(hidden='' type='submit', value='save')
+            td
+              input#editSubgenreButton(type='button', value='edit')
+              input#saveSubgenreButton(hidden='' type='submit', value='save')
       tr
         th Pages
-        td= book.height
         td
+          span#thePages= book.height
           form(
             action='/editbook/'+book.id
             method='post'
@@ -79,15 +82,16 @@ block content
             #editPages(hidden='')
               input(
                 type='text'
-                name='pages'
+                name='height'
                 value=book.height
                 )
-            input#editPagesButton(type='button', value='edit')
-            input#savePagesButton(hidden='' type='submit', value='save')
+            td
+              input#editPagesButton(type='button', value='edit')
+              input#savePagesButton(hidden='' type='submit', value='save')
       tr
         th Publisher
-        td= book.publisher
         td
+          span#thePublisher= book.publisher
           form(
             action='/editbook/'+book.id
             method='post'
@@ -98,8 +102,9 @@ block content
                 name='publisher'
                 value=book.publisher
                 )
-            input#editPublisherButton(type='button', value='edit')
-            input#savePublisherButton(hidden='' type='submit', value='save')  
+            td
+              input#editPublisherButton(type='button', value='edit')
+              input#savePublisherButton(hidden='' type='submit', value='save')  
     form(
       action='deletebook/' + book.id
       method='post'
@@ -116,22 +121,27 @@ block content
     $("#saveTitleButton").show();
     });
     $("#editAuthorButton").click(function() {
+    $("#theAuthor").hide();
     $("#editAuthor").show();
     $("#saveAuthorButton").show();
     });
     $("#editGenreButton").click(function() {
+    $("#theGenre").hide();
     $("#editGenre").show();
     $("#saveGenreButton").show();
     });
     $("#editSubgenreButton").click(function() {
+    $("#theSubgenre").hide();
     $("#editSubgenre").show();
     $("#saveSubgenreButton").show();
     });
     $("#editPagesButton").click(function() {
+    $("#thePages").hide();
     $("#editPages").show();
     $("#savePagesButton").show();
     });
     $("#editPublisherButton").click(function() {
+    $("#thePublisher").hide();
     $("#editPublisher").show();
     $("#savePublisherButton").show();
     });
