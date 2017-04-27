@@ -21,3 +21,12 @@ block content
       tr
         th Publisher
         td= book.publisher
+    
+    form(
+      action='deletebook/' + book.id
+      method='post'
+    )
+      button(
+        onclick="return confirm('Are you sure you want to delete this book?')"
+        type='submit'
+      ) Delete book
