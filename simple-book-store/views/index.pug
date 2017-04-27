@@ -21,6 +21,15 @@ block content
     button#searchAuthors(
       type='submit'
     ) search
+  form
+    input#genre(
+      type='text'
+      name='genre'
+      placeholder='Search by Genre'
+    )
+    button#searchGenres(
+      type='submit'
+    ) search
   
   table#bookstore.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
     tr
@@ -49,5 +58,10 @@ block content
     $('#searchAuthors').on('click', function () {
     var searchInput = $('#author').val();
     var url = "author/" + searchInput;
+    window.open(url);
+    });
+    $('#searchGenres').on('click', function () {
+    var searchInput = $('#genre').val();
+    var url = "genre/" + searchInput;
     window.open(url);
     });
