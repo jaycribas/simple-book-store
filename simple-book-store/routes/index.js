@@ -60,15 +60,11 @@ router.put('/editbook/:id', (req, res) => {
 
 
 //DELETE
-router.delete('/deletebook/:id', (req, res) => {
+router.get('/book/deletebook/:id', (req, res) => {
   const id  = req.params.id
   db.deleteBook(id)
   .then(() => {
-    res.status(200)
-      .json({
-        status: 'success',
-        message: `Removed book`
-      })
+    res.redirect('/')
   }).catch(error => {
     res.status(500).render('error', {
       error: error,
