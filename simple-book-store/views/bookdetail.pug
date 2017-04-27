@@ -5,8 +5,8 @@ block content
     table.books.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
       tr
         th Title
-        td#theTitle= book.title
-        td.weirdbox
+        td
+          span#theTitle= book.title
           form(
             action='/editbook/'+book.id
             method='post'
