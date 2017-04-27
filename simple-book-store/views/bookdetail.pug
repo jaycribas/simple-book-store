@@ -6,21 +6,59 @@ block content
       tr
         th Title
         td= book.title
+        td
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+              input(
+                type='text'
+                name='title'
+                value=book.title
+                )
+              input.editButton(type='submit', value='save')
+              //- input.saveButton(type='submit', value='save')
       tr
         th Author
         td= book.author
+        td
+          input.editButton(type='button', value='edit')
+          input.saveButton(type='button', value='save')
       tr
         th Genre
         td= book.genre
+        td
+          input.editButton(type='button', value='edit')
+          input.saveButton(type='button', value='save')
       tr
         th Subgenre
         td= book.subgenre
+        td
+          input.editButton(type='button', value='edit')
+          input.saveButton(type='button', value='save')
       tr
         th Pages
         td= book.height
+        td
+          input.editButton(type='button', value='edit')
+          input.saveButton(type='button', value='save')
       tr
         th Publisher
         td= book.publisher
+        td
+          input.editButton(type='button', value='edit')
+          input.saveButton(type='button', value='save')
+    #editRowHolder
+      form(
+        action='/editbook/' + book.id
+        method='post'
+        )
+          tr.editRow
+            td
+              input(type='text', name='field1')
+            td
+              input.saveButton(type='submit', value='save')
+                
     
     form(
       action='deletebook/' + book.id
@@ -30,3 +68,19 @@ block content
         onclick="return confirm('Are you sure you want to delete this book?')"
         type='submit'
       ) Delete book
+
+  //- script.
+  //-   $(function () {
+  //-   $( 'tr' ).each( function editAndSave( index, tr ){
+  //-   var $tr = $( tr );      
+  //-   $tr.find( 'input[type=button]' ).on( 'click', function( e ){            
+  //-   var toggle = $( e.target ).is( '.editButton' );    
+  //-   if( toggle ){
+  //-   $tr.attr( 'contenteditable', toggle );
+  //-   }
+  //-   else {
+  //-   $tr.removeAttr( 'contenteditable' );
+  //-   }
+  //-   } )
+  //-   });
+  //-   });

@@ -40,15 +40,16 @@ router.post('/addbook', (req, res) => {
 })
 
 //PUT
-router.put('/editbook/:id', (req, res) => {
+router.post('/editbook/:id', (req, res) => {
   const id = req.params.id
   const book = req.body
   db.editBook( id, book )
     .then( () =>
-      res.status(201).json({
-        status: 'success',
-        message: 'Edited book'
-      })
+      // res.status(201).json({
+      //   status: 'success',
+      //   message: 'Edited book'
+      // })
+      res.redirect('/book/' + id)
      )
     .catch( error => {
       res.status(500).render('error', {
