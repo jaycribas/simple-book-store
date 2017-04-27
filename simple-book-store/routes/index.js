@@ -74,34 +74,4 @@ router.post('/book/deletebook/:id', (req, res) => {
   })
 })
 
-// //GET title
-// router.get('/title/:title', (req, res) => {
-//   const title = req.params.title
-//   console.log(title)
-//   db.searchTitles(title)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
-//
-// //GET author
-// router.get('/author/:author', (req, res) => {
-//   const author = req.params.author
-//   console.log(author)
-//   db.searchAuthors(author)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
-//
-// //GET genre
-// router.get('/genre/:genre', (req, res) => {
-//   const genre = req.params.genre
-//   console.log(genre)
-//   db.searchGenres(genre)
-//   .then(books => {
-//     res.render('index', { books: books})
-//   } )
-// })
-
 module.exports = router;

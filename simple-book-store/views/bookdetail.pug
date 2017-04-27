@@ -5,61 +5,101 @@ block content
     table.books.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
       tr
         th Title
-        td= book.title
+        td#theTitle= book.title
+        td.weirdbox
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+            #editTitle(hidden='')
+              input(
+                type='text'
+                name='title'
+                value=book.title
+              )
+          td.wtf    
+            input#editTitleButton(type='button', value='edit')
+            input#saveTitleButton(hidden='' type='submit', value='save')
+      tr
+        th Author
+        td= book.author
         td
           form(
             action='/editbook/'+book.id
             method='post'
             )
+            #editAuthor(hidden='')
               input(
                 type='text'
-                name='title'
-                value=book.title
+                name='author'
+                value=book.author
                 )
-              input.editButton(type='submit', value='save')
-              //- input.saveButton(type='submit', value='save')
-      tr
-        th Author
-        td= book.author
-        td
-          input.editButton(type='button', value='edit')
-          input.saveButton(type='button', value='save')
+            input#editAuthorButton(type='button', value='edit')
+            input#saveAuthorButton(hidden='' type='submit', value='save')
       tr
         th Genre
         td= book.genre
         td
-          input.editButton(type='button', value='edit')
-          input.saveButton(type='button', value='save')
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+            #editGenre(hidden='')
+              input(
+                type='text'
+                name='genre'
+                value=book.genre
+                )
+            input#editGenreButton(type='button', value='edit')
+            input#saveGenreButton(hidden='' type='submit', value='save')
       tr
         th Subgenre
         td= book.subgenre
         td
-          input.editButton(type='button', value='edit')
-          input.saveButton(type='button', value='save')
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+            #editSubgenre(hidden='')
+              input(
+                type='text'
+                name='subgenre'
+                value=book.subgenre
+                )
+            input#editSubgenreButton(type='button', value='edit')
+            input#saveSubgenreButton(hidden='' type='submit', value='save')
       tr
         th Pages
         td= book.height
         td
-          input.editButton(type='button', value='edit')
-          input.saveButton(type='button', value='save')
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+            #editPages(hidden='')
+              input(
+                type='text'
+                name='pages'
+                value=book.height
+                )
+            input#editPagesButton(type='button', value='edit')
+            input#savePagesButton(hidden='' type='submit', value='save')
       tr
         th Publisher
         td= book.publisher
         td
-          input.editButton(type='button', value='edit')
-          input.saveButton(type='button', value='save')
-    #editRowHolder
-      form(
-        action='/editbook/' + book.id
-        method='post'
-        )
-          tr.editRow
-            td
-              input(type='text', name='field1')
-            td
-              input.saveButton(type='submit', value='save')
-                
-    
+          form(
+            action='/editbook/'+book.id
+            method='post'
+            )
+            #editPublisher(hidden='')
+              input(
+                type='text'
+                name='publisher'
+                value=book.publisher
+                )
+            input#editPublisherButton(type='button', value='edit')
+            input#savePublisherButton(hidden='' type='submit', value='save')  
     form(
       action='deletebook/' + book.id
       method='post'
@@ -69,18 +109,29 @@ block content
         type='submit'
       ) Delete book
 
-  //- script.
-  //-   $(function () {
-  //-   $( 'tr' ).each( function editAndSave( index, tr ){
-  //-   var $tr = $( tr );      
-  //-   $tr.find( 'input[type=button]' ).on( 'click', function( e ){            
-  //-   var toggle = $( e.target ).is( '.editButton' );    
-  //-   if( toggle ){
-  //-   $tr.attr( 'contenteditable', toggle );
-  //-   }
-  //-   else {
-  //-   $tr.removeAttr( 'contenteditable' );
-  //-   }
-  //-   } )
-  //-   });
-  //-   });
+  script.
+    $("#editTitleButton").click(function() {
+    $("#theTitle").hide();
+    $("#editTitle").show();
+    $("#saveTitleButton").show();
+    });
+    $("#editAuthorButton").click(function() {
+    $("#editAuthor").show();
+    $("#saveAuthorButton").show();
+    });
+    $("#editGenreButton").click(function() {
+    $("#editGenre").show();
+    $("#saveGenreButton").show();
+    });
+    $("#editSubgenreButton").click(function() {
+    $("#editSubgenre").show();
+    $("#saveSubgenreButton").show();
+    });
+    $("#editPagesButton").click(function() {
+    $("#editPages").show();
+    $("#savePagesButton").show();
+    });
+    $("#editPublisherButton").click(function() {
+    $("#editPublisher").show();
+    $("#savePublisherButton").show();
+    });
