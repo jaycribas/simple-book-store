@@ -60,7 +60,7 @@ router.put('/editbook/:id', (req, res) => {
 
 
 //DELETE
-router.get('/book/deletebook/:id', (req, res) => {
+router.post('/book/deletebook/:id', (req, res) => {
   const id  = req.params.id
   db.deleteBook(id)
   .then(() => {
