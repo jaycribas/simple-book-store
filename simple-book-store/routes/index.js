@@ -17,7 +17,7 @@ router.get('/book/:id', (req, res) => {
   const id = req.params.id
   db.viewBook(id)
   .then(books => {
-    res.render('index', { books: books})
+    res.render('bookdetail', { books: books})
   } )
 })
 
