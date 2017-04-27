@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  for book in books 
+    table.books.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
+      tr
+        th Title
+        td= book.title
+      tr
+        th Author
+        td= book.author
+      tr
+        th Genre
+        td= book.genre
+      tr
+        th Subgenre
+        td= book.subgenre
+      tr
+        th Pages
+        td= book.height
+      tr
+        th Publisher
+        td= book.publisher
