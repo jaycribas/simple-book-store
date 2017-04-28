@@ -3,10 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha ./test/setup.js --recursive test/"
+  },
+  "engines": {
+    "node": ">=7.0.0",
+    "npm": ">=3.10.8"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "chai": "^3.5.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
@@ -15,5 +21,11 @@
     "pg-promise": "^5.6.7",
     "pug": "^2.0.0-beta.12",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "nodemon": "^1.11.0",
+    "mocha": "^3.3.0"
   }
 }
