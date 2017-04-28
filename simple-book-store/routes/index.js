@@ -74,8 +74,9 @@ router.post('/book/deletebook/:id', (req, res) => {
   })
 })
 
-router.post('/api/test/reset-db') => {
-
-}
+/* Test */
+router.post('/api/test/reset-db', (req, res) => {
+  
+});
 
 module.exports = router;

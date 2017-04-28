@@ -2,10 +2,15 @@ body {
   padding: 50px;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
+  background-color: #E9F1DF;
 }
 
 a {
   color: #00B7FF;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
 label {
@@ -25,4 +30,25 @@ label {
 
 [contenteditable] {
     background: #ddddff;
+}
+
+.bookdetail {
+  width: 50%;
+}
+
+thead {
+  background-color: #36B1BF;
+}
+
+.detailhead {
+  background-color: #36B1BF !important;
+  width: 15%
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+  background-color: #cdeef2;
+}
+
+.bookdetail.table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
+  background-color: #fff;
 }
