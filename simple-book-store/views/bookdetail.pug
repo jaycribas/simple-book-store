@@ -2,32 +2,33 @@ extends layout
 
 block content
   for book in books 
-    table.books.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
+    table.bookdetail.datatable.table.table-striped.table-bordered(cellpadding='0', cellspacing='0', border='0')
       tr
-        th Title
+        th.detailhead Title
         td
           span#theTitle= book.title
           form(
             action='/editbook/'+book.id
             method='post'
-            )
+          )
             #editTitle(hidden='')
               input(
                 type='text'
                 name='title'
                 value=book.title
+                style="width:100%;"
               )
             td    
               input#editTitleButton(type='button', value='edit')
               input#saveTitleButton(hidden='' type='submit', value='save')
       tr
-        th Author
+        th.detailhead Author
         td
           span#theAuthor= book.author
           form(
             action='/editbook/'+book.id
             method='post'
-            )
+          )
             #editAuthor(hidden='')
               input(
                 type='text'
@@ -38,13 +39,13 @@ block content
               input#editAuthorButton(type='button', value='edit')
               input#saveAuthorButton(hidden='' type='submit', value='save')
       tr
-        th Genre
+        th.detailhead Genre
         td
           span#theGenre= book.genre
           form(
             action='/editbook/'+book.id
             method='post'
-            )
+          )
             #editGenre(hidden='')
               input(
                 type='text'
@@ -55,7 +56,7 @@ block content
               input#editGenreButton(type='button', value='edit')
               input#saveGenreButton(hidden='' type='submit', value='save')
       tr
-        th Subgenre
+        th.detailhead Subgenre
         td
           span#theSubgenre= book.subgenre
           form(
@@ -72,7 +73,7 @@ block content
               input#editSubgenreButton(type='button', value='edit')
               input#saveSubgenreButton(hidden='' type='submit', value='save')
       tr
-        th Pages
+        th.detailhead Pages
         td
           span#thePages= book.height
           form(
@@ -89,13 +90,13 @@ block content
               input#editPagesButton(type='button', value='edit')
               input#savePagesButton(hidden='' type='submit', value='save')
       tr
-        th Publisher
+        th.detailhead Publisher
         td
           span#thePublisher= book.publisher
           form(
             action='/editbook/'+book.id
             method='post'
-            )
+          )
             #editPublisher(hidden='')
               input(
                 type='text'
@@ -116,31 +117,37 @@ block content
 
   script.
     $("#editTitleButton").click(function() {
+    $("#editTitleButton").hide();
     $("#theTitle").hide();
     $("#editTitle").show();
     $("#saveTitleButton").show();
     });
     $("#editAuthorButton").click(function() {
+    $("#editAuthorButton").hide();
     $("#theAuthor").hide();
     $("#editAuthor").show();
     $("#saveAuthorButton").show();
     });
     $("#editGenreButton").click(function() {
+    $("#editGenreButton").hide();
     $("#theGenre").hide();
     $("#editGenre").show();
     $("#saveGenreButton").show();
     });
     $("#editSubgenreButton").click(function() {
+    $("#editSubgenreButton").hide();
     $("#theSubgenre").hide();
     $("#editSubgenre").show();
     $("#saveSubgenreButton").show();
     });
     $("#editPagesButton").click(function() {
+    $("#editPagesButton").hide();
     $("#thePages").hide();
     $("#editPages").show();
     $("#savePagesButton").show();
     });
     $("#editPublisherButton").click(function() {
+    $("#editPublisherButton").hide();
     $("#thePublisher").hide();
     $("#editPublisher").show();
     $("#savePublisherButton").show();
