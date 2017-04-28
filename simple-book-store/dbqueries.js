@@ -4,6 +4,7 @@ var db = pgp(connectionString)
 
 //see a list of books - any:
 const listBooks = () => {
+  // return Promise.resolve(5)
   return db.any(`
     SELECT
       *
@@ -11,6 +12,13 @@ const listBooks = () => {
       books
   `)
 }
+
+// const allBooks = () => `
+//     SELECT
+//       *
+//     FROM
+//       books
+//   `
 
 const addBook = (book) => {
   return db.one(`
